@@ -1,0 +1,5 @@
+name: lunabukkit
+version: 1.0.1
+main: com.arrayprolc.lunabukkit.core.LunaBukkit
+commands:
+     luna: 
