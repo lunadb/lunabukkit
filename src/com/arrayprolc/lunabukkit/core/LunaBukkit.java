@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.arrayprolc.lunadb.LunaStarter;
+import com.arrayprolc.lunadb.LunaDB;
 import com.arrayprolc.lunadb.command.CommandManager;
 
 public class LunaBukkit extends JavaPlugin {
@@ -20,7 +20,7 @@ public class LunaBukkit extends JavaPlugin {
         CommandManager.initCommands();
         Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(this, new Runnable() {
             public void run() {
-                LunaStarter.main(new String[] { port + "", key, "no" });
+                LunaDB.main(new String[] { port + "", key, "no" });
             }
         }, 1);
     }
@@ -28,9 +28,8 @@ public class LunaBukkit extends JavaPlugin {
     @SuppressWarnings("deprecation")
     public void onDisable() {
         Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(this, new Runnable() {
-            @SuppressWarnings("static-access")
             public void run() {
-                LunaStarter.database.getManager().shutdownServer();
+                LunaDB.getManager().shutdownServer();
             }
         }, 1);
     }
